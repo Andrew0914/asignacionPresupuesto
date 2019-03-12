@@ -1,3 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/***** ESTILOS PRINCIPALES *****/
+
+html,
+body {
+    background-color: whitesmoke;
+}
+
+.contenedor {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
+.right {
+    float: right;
+}
+
+
+/** HOME **/
+
+.card-header-image {
+    background-image: url('assets/salary.png');
+    background-size: cover;
+}
