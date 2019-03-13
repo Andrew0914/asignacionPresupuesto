@@ -27,10 +27,11 @@ export class HomeComponent implements OnInit {
       const manager: Manager = {
         nombre: this.nombre,
         tipo: this.asigServ.getTipoEmpleado(this.tipoElegido),
-        nodos: [{ nombre: 'Arturo', tipo: {tipo: 'QA', asignacion: 500} }, { nombre: 'Andrew', tipo: {tipo: 'Developer', asignacion: 1000} }]
+        nodos: []
       };
       this.asigServ.crearJerarquinaInicial( manager );
       this.departamento = this.asigServ.getDepartamento();
+      console.log(this.asigServ.getDepartamento());
     } else {
       this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
     }

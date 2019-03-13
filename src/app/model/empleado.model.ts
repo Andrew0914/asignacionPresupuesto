@@ -1,6 +1,6 @@
 import { TipoEmpleado } from './tipo-empleado.model';
 
-export interface Manager{
+export interface Empleado {
     nombre: string;
-    tipo: TipoEmpleado,
+    tipo: TipoEmpleado;
 }

@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 /** COMPONENTES */
@@ -16,13 +17,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
+import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    AgregarEmpleadoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,11 @@ import { EmpleadoComponent } from './components/empleado/empleado.component';
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    AgregarEmpleadoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
