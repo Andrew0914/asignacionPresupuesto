@@ -24,8 +24,8 @@ export class AsignacionService {
   ];
 
   private departamento: any;
-
   private incrementalID = 0;
+  private presupuestoTotal = 0;
 
   constructor() {
     this.cargarLocalStorage();
@@ -114,6 +114,26 @@ export class AsignacionService {
       }
       if (nodo.nodos[i].nodos ) {
         this.iteracionEliminar(nodo.nodos[i] , id);
+      }
+    }
+  }
+
+  calcularPresupuesto(empleado: any) {
+    let presupuesto = empleado.tipo.asignacion;
+    if ( empleado.nodos ) {
+      this.iteracionCalculo(empleado)
+      presupuesto += this.presupuestoTotal;
+    }
+    this.presupuestoTotal = 0;
+    return {presupuesto , empleado};
+  }
+
+  iteracionCalculo(nodo: any) {
+    for (let i = 0; i < nodo.nodos.length ; i++) {
+      console.log(nodo.nodos[i]);
+      this.presupuestoTotal += nodo.nodos[i].tipo.asignacion;
+      if (nodo.nodos[i].nodos ) {
+        this.iteracionCalculo(nodo.nodos[i]);
       }
     }
   }

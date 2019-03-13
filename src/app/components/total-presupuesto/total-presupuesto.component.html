@@ -1,0 +1,11 @@
+<ul class="lista">
+    <app-empleado [empleado]='presupuesto.empleado' [noAcciones]='true'></app-empleado>
+    <li>
+        <h3>
+            Total: {{ presupuesto.presupuesto }}
+        </h3>
+    </li>
+</ul>
+<div mat-dialog-actions>
+    <button mat-raised-button color="accent" (click)="cerrar()">Cerrar</button>
+</div>

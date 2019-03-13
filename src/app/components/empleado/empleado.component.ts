@@ -5,6 +5,7 @@ import { Empleado } from '../../model/empleado.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarEmpleadoComponent } from '../agregar-empleado/agregar-empleado.component';
 import { ConfirmaQuitarComponent } from '../confirma-quitar/confirma-quitar.component';
+import { TotalPresupuestoComponent } from '../total-presupuesto/total-presupuesto.component';
 
 @Component({
   selector: 'app-empleado',
@@ -15,6 +16,7 @@ export class EmpleadoComponent implements OnInit {
 
   @Input() empleado: any;
   @Input() semilla: boolean;
+  @Input() noAcciones = false;
 
   constructor(public asigService: AsignacionService, private dialog: MatDialog) {
   }
@@ -43,6 +45,11 @@ export class EmpleadoComponent implements OnInit {
         }
       });
     }
+  }
+
+
+  calculaPresupuesto( empleado: any){
+    const dialogRef = this.dialog.open(TotalPresupuestoComponent, { width: '600px',  data: this.empleado});
   }
 
 }

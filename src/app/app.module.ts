@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 /** COMPONENTES */
@@ -19,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
 import { ConfirmaQuitarComponent } from './components/confirma-quitar/confirma-quitar.component';
+import { TotalPresupuestoComponent } from './components/total-presupuesto/total-presupuesto.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ConfirmaQuitarComponent } from './components/confirma-quitar/confirma-q
     NavbarComponent,
     EmpleadoComponent,
     AgregarEmpleadoComponent,
-    ConfirmaQuitarComponent
+    ConfirmaQuitarComponent,
+    TotalPresupuestoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +42,13 @@ import { ConfirmaQuitarComponent } from './components/confirma-quitar/confirma-q
     MatSelectModule,
     MatInputModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
   ],
   entryComponents: [
     AgregarEmpleadoComponent,
-    ConfirmaQuitarComponent
+    ConfirmaQuitarComponent,
+    TotalPresupuestoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

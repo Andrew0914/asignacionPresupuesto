@@ -15,19 +15,22 @@
         {{ empleado.nombre }} $ {{ empleado.tipo.asignacion }}
     </h4>
     <!-- ACCIONES POR NODO-->
-    <div class="button-row dline">
+    <div class="button-row dline" *ngIf='!noAcciones'>
         <button mat-button color="warn" (click)="quitar()">
 			<i class="fa fa-minus"></i>
 		</button>
         <button mat-button color="primary" *ngIf='empleado.tipo.tipo == "Manager"' (click)="agregarInferior()">
 			<i class="fa fa-plus"></i>
 			<i class="fas fa-arrow-alt-circle-down"></i>
-		</button>
+        </button>
+        <button mat-button color="basic" *ngIf='empleado.tipo.tipo == "Manager"' (click)="calculaPresupuesto(empleado)">
+            <i class="fas fa-money-bill-alt"></i>
+        </button>
     </div>
     <!-- NODOS -->
     <div *ngIf='empleado.nodos'>
         <ul class='lista'>
-            <app-empleado *ngFor='let nodo of empleado.nodos' [empleado]='nodo'></app-empleado>
+            <app-empleado *ngFor='let nodo of empleado.nodos' [empleado]='nodo' [noAcciones]='noAcciones'></app-empleado>
         </ul>
     </div>
 </li>

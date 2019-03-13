@@ -4,6 +4,10 @@
 
 /***** ESTILOS PRINCIPALES *****/
 
+* {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 html,
 body {
     background-color: whitesmoke;
@@ -16,7 +20,7 @@ body {
 
 .scroll {
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .mt-1 {
@@ -62,8 +66,19 @@ ul.lista {
 ul.lista li {
     border-left: 2px solid black;
     padding-left: 5px;
-    width: 100%;
+    max-width: 100%;
     white-space: nowrap;
+}
+
+ul.lista li h4 {
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+ul.lista li h4:hover {
+    background-color: lightgray;
+    padding: 5px 0px;
+    border-radius: 3px;
 }
 
 
