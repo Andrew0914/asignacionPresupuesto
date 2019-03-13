@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-agregar-empleado',
   templateUrl: './agregar-empleado.component.html',
-  styleUrls: ['./agregar-empleado.component.css']
+  styles: []
 })
 export class AgregarEmpleadoComponent implements OnInit {
 

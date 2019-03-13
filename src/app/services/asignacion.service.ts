@@ -42,8 +42,8 @@ export class AsignacionService {
    * Devuelve un objeto de  tipo de empleado
    * @param tipo string
    */
-  getTipoEmpleado( tipo: string ): TipoEmpleado{
-    for ( const tipoEmpleado of this.tipos){
+  getTipoEmpleado( tipo: string ): TipoEmpleado {
+    for ( const tipoEmpleado of this.tipos) {
       if ( tipoEmpleado.tipo === tipo ) {
         return tipoEmpleado;
       }
@@ -137,7 +137,7 @@ export class AsignacionService {
   calcularPresupuesto(empleado: any) {
     let presupuesto = empleado.tipo.asignacion;
     if ( empleado.nodos ) {
-      this.iteracionCalculo(empleado)
+      this.iteracionCalculo(empleado);
       presupuesto += this.presupuestoTotal;
     }
     this.presupuestoTotal = 0;

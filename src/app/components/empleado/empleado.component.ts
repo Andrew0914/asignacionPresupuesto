@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AsignacionService } from 'src/app/services/asignacion.service';
-import { Manager } from '../../model/manager.model';
-import { Empleado } from '../../model/empleado.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarEmpleadoComponent } from '../agregar-empleado/agregar-empleado.component';
 import { ConfirmaQuitarComponent } from '../confirma-quitar/confirma-quitar.component';
@@ -10,7 +8,7 @@ import { TotalPresupuestoComponent } from '../total-presupuesto/total-presupuest
 @Component({
   selector: 'app-empleado',
   templateUrl: './empleado.component.html',
-  styleUrls: ['./empleado.component.css']
+  styles: []
 })
 export class EmpleadoComponent implements OnInit {
 
@@ -56,7 +54,7 @@ export class EmpleadoComponent implements OnInit {
   /**
    * Genera el arbol y consulta el presupeusto para un empleado dado
    */
-  calculaPresupuesto( empleado: any){
+  calculaPresupuesto( empleado: any) {
     const dialogRef = this.dialog.open(TotalPresupuestoComponent, { width: '600px',  data: this.empleado});
   }
 

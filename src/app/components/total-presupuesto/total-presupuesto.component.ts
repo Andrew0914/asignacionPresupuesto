@@ -5,7 +5,7 @@ import { AsignacionService } from 'src/app/services/asignacion.service';
 @Component({
   selector: 'app-total-presupuesto',
   templateUrl: './total-presupuesto.component.html',
-  styleUrls: ['./total-presupuesto.component.css']
+  styles: []
 })
 export class TotalPresupuestoComponent implements OnInit {
 

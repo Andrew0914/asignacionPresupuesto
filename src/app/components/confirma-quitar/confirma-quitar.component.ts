@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-confirma-quitar',
   templateUrl: './confirma-quitar.component.html',
-  styleUrls: ['./confirma-quitar.component.css']
+  styles: []
 })
 export class ConfirmaQuitarComponent implements OnInit {
 
