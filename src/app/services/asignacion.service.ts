@@ -27,7 +27,9 @@ export class AsignacionService {
 
   private incrementalID = 0;
 
-  constructor() { }
+  constructor() {
+    this.cargarLocalStorage();
+  }
 
   /**
    * Devuelve los tipos disponibles de empleados
@@ -67,7 +69,15 @@ export class AsignacionService {
    * Almacena los cambios en el locla storage
    */
   guardarCambios() {
-    console.log(this.departamento);
+    localStorage.setItem('departamento' , JSON.stringify( this.departamento ));
+  }
+
+  cargarLocalStorage() {
+      if ( localStorage.getItem('data') ){
+          this.departamento = JSON.parse( localStorage.getItem('departamento') );
+      } else {
+          this.departamento = null;
+      }
   }
 
   /**
@@ -78,25 +88,32 @@ export class AsignacionService {
     return this.incrementalID;
   }
 
+  /**
+   * Recibe el id del elemento a borrar compara si es la semilla o inicia una iteracion de borrado
+   * @param id number
+   */
   eliminar( id: any ) {
     if ( this.departamento.manager.id === id ) {
       this.departamento.manager = undefined;
     } else {
-      this.iteracion( this.departamento.manager,id);
+      this.iteracionEliminar( this.departamento.manager,id);
     }
-
     this.guardarCambios();
   }
 
-
-  iteracion(nodo: any, id: number) {
+  /**
+   * Itera los elementos o nodos , evalua que el id corresponday lo remueve de su arreglo correspondiente
+   * @param nodo any
+   * @param id number
+   */
+  iteracionEliminar(nodo: any, id: number) {
     for (let i = 0; i < nodo.nodos.length ; i++) {
       if ( nodo.nodos[i].id === id ) {
         nodo.nodos.splice(i , 1);
         break;
       }
       if (nodo.nodos[i].nodos ) {
-        this.iteracion(nodo.nodos[i] , id);
+        this.iteracionEliminar(nodo.nodos[i] , id);
       }
     }
   }

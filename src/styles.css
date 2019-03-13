@@ -14,6 +14,11 @@ body {
     margin: 0 auto;
 }
 
+.scroll {
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
 .mt-1 {
     margin-top: 1em;
 }
@@ -57,4 +62,15 @@ ul.lista {
 ul.lista li {
     border-left: 2px solid black;
     padding-left: 5px;
+    width: 100%;
+    white-space: nowrap;
+}
+
+
+/** RESPONSIVE **/
+
+@media only screen and (max-width: 720px) {
+    .contenedor {
+        width: 95%;
+    }
 }
