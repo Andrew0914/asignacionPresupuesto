@@ -1,3 +1,4 @@
+<!-- ESTRUCTURA DEPARTAMENTO -->
 <mat-card class="mt-1">
     <!-- HEADER -->
     <mat-card-header>
@@ -30,6 +31,17 @@
             <app-empleado [empleado]='asigServ.getDepartamento().manager' [semilla]='true'></app-empleado>
         </ul>
         <!-- JERARQUIA DE DEPARTAMENTOS -->
+        <br>
+        <!-- total presupuesto-->
+        <mat-card class="mt-1 total">
+            <mat-card-header>
+                <div mat-card-avatar class="card-header-image-total"></div>
+                <mat-card-title>
+                    Total Departamento:
+                    <h1>$ {{ asigServ.totalDepartamento }}</h1>
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
         <br>
     </mat-card-content>
 

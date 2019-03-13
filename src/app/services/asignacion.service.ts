@@ -24,8 +24,9 @@ export class AsignacionService {
   ];
 
   private departamento: any;
-   incrementalID = 0;
+  private incrementalID = 0;
   private presupuestoTotal = 0;
+  public totalDepartamento = 0;
 
   constructor() {
     this.cargarLocalStorage();
@@ -158,6 +159,14 @@ export class AsignacionService {
       if (nodo.nodos[i].nodos ) {
         this.iteracionCalculo(nodo.nodos[i]);
       }
+    }
+  }
+
+  setTotalDepartamento() {
+    if ( this.departamento && this.departamento.manager ) {
+      this.totalDepartamento =  this.calcularPresupuesto( this.departamento.manager ).presupuesto;
+    } else {
+      this.totalDepartamento = 0;
     }
   }
 

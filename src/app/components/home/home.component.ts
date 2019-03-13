@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
   tipoElegido: string;
   nombre: string;
 
+
   constructor(public asigServ: AsignacionService, private snackBar: MatSnackBar) {
+     this.asigServ.setTotalDepartamento();
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit {
         nodos: []
       };
       this.asigServ.crearJerarquinaInicial( manager );
+      this.asigServ.setTotalDepartamento();
     } else {
       this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
     }

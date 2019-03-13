@@ -59,6 +59,16 @@ body {
     background-size: cover;
 }
 
+.card-header-image-total {
+    background-image: url('assets/change.png');
+    background-size: cover;
+}
+
+.total {
+    background-color: #ff4081;
+    color: white;
+}
+
 
 /** NODOS **/
 
