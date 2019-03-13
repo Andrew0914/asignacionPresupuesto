@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TipoEmpleado } from '../model/tipo-empleado.model';
-import { Manager } from '../model/empleado.model';
+import { Empleado } from '../model/empleado.model';
+import { Manager } from '../model/manager.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,8 @@ export class AsignacionService {
   ];
 
   private departamento: any;
+
+  private incrementalID = 0;
 
   constructor() { }
 
@@ -58,6 +61,44 @@ export class AsignacionService {
    */
   crearJerarquinaInicial( manager: Manager) {
     this.departamento = { manager };
+  }
+
+  /**
+   * Almacena los cambios en el locla storage
+   */
+  guardarCambios() {
+    console.log(this.departamento);
+  }
+
+  /**
+   * Devuelve el id incrementando en uno
+   */
+  getIncrementalID() {
+    this.incrementalID += 1;
+    return this.incrementalID;
+  }
+
+  eliminar( id: any ) {
+    if ( this.departamento.manager.id === id ) {
+      this.departamento.manager = undefined;
+    } else {
+      this.iteracion( this.departamento.manager,id);
+    }
+
+    this.guardarCambios();
+  }
+
+
+  iteracion(nodo: any, id: number) {
+    for (let i = 0; i < nodo.nodos.length ; i++) {
+      if ( nodo.nodos[i].id === id ) {
+        nodo.nodos.splice(i , 1);
+        break;
+      }
+      if (nodo.nodos[i].nodos ) {
+        this.iteracion(nodo.nodos[i] , id);
+      }
+    }
   }
 
 }

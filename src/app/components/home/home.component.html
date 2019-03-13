@@ -8,7 +8,7 @@
 
     <!-- CONTENIDO-->
     <mat-card-content>
-        <div class="inicio" *ngIf='!departamento'>
+        <div class="inicio" *ngIf='!asigServ.getDepartamento()?.manager'>
             <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
             <h4>Crear departamento</h4>
             <mat-form-field class="mr-1">
@@ -26,8 +26,8 @@
         <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
         <!-- JERARQUIA DE DEPARTAMENTOS -->
         <br>
-        <ul *ngIf='departamento' class='mt-2'>
-            <app-empleado [empleado]='departamento.manager' [semilla]='true'></app-empleado>
+        <ul *ngIf='asigServ.getDepartamento()?.manager' class='mt-2 lista'>
+            <app-empleado [empleado]='asigServ.getDepartamento().manager' [semilla]='true'></app-empleado>
         </ul>
         <!-- JERARQUIA DE DEPARTAMENTOS -->
     </mat-card-content>

@@ -25,13 +25,13 @@ export class HomeComponent implements OnInit {
   crearDepartamento() {
     if ( this.nombre && this.tipoElegido ){
       const manager: Manager = {
+        id: this.asigServ.getIncrementalID(),
         nombre: this.nombre,
         tipo: this.asigServ.getTipoEmpleado(this.tipoElegido),
         nodos: []
       };
       this.asigServ.crearJerarquinaInicial( manager );
       this.departamento = this.asigServ.getDepartamento();
-      console.log(this.asigServ.getDepartamento());
     } else {
       this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
     }

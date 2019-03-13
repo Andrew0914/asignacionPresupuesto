@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AsignacionService } from 'src/app/services/asignacion.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-agregar-empleado',
@@ -14,24 +15,36 @@ export class AgregarEmpleadoComponent implements OnInit {
   empleado: any;
 
   constructor(public dialogRef: MatDialogRef<AgregarEmpleadoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public asigServ: AsignacionService) {
+    @Inject(MAT_DIALOG_DATA) public data: any, public asigServ: AsignacionService,
+    private snackBar: MatSnackBar) {
       this.empleado = data;
     }
 
   ngOnInit() {
   }
-
+  /**
+   * Construye y devuelve el node del empleado generado, para que el componente de empleado lo maneje
+   */
   guardar() {
-    let empleado = null;
-    if (this.tipoElegido === 'Manager') {
-      empleado = { nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido) , nodos: [] };
+    // validamos
+    if (this.nombre && this.tipoElegido ) {
+      let empleado = null;
+      // si es manager tendra nodos
+      if (this.tipoElegido === 'Manager') {
+        empleado = { id: this.asigServ.getIncrementalID() , nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido) , nodos: [] };
+      } else {
+        empleado = { id: this.asigServ.getIncrementalID(), nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido)  };
+      }
+      this.dialogRef.close( empleado );
     } else {
-      empleado = { nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido)  };
+      this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
     }
-    this.dialogRef.close( empleado );
-  }
 
-  cancelar(){
+  }
+  /**
+   * Cancelamos el dialogo sin data de vuelta
+   */
+  cancelar() {
     this.dialogRef.close( null );
   }
 

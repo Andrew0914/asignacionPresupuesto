@@ -4,6 +4,7 @@ import { Manager } from '../../model/manager.model';
 import { Empleado } from '../../model/empleado.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarEmpleadoComponent } from '../agregar-empleado/agregar-empleado.component';
+import { ConfirmaQuitarComponent } from '../confirma-quitar/confirma-quitar.component';
 
 @Component({
   selector: 'app-empleado',
@@ -21,9 +22,15 @@ export class EmpleadoComponent implements OnInit {
   ngOnInit() {
   }
 
-  agregarAmiNivel() {}
 
-  quitar() {}
+  quitar() {
+    const dialogRef = this.dialog.open(ConfirmaQuitarComponent, { width: '300px',  data: this.empleado, disableClose: true});
+    dialogRef.afterClosed().subscribe( empleadoId => {
+      if ( empleadoId ) {
+        this.asigService.eliminar( empleadoId );
+      }
+    });
+  }
 
   agregarInferior() {
     // si tiene nodos / es manager
@@ -32,6 +39,7 @@ export class EmpleadoComponent implements OnInit {
       dialogRef.afterClosed().subscribe( empleado => {
         if ( empleado ) {
           this.empleado.nodos.unshift(empleado);
+          this.asigService.guardarCambios();
         }
       });
     }

@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
+import { ConfirmaQuitarComponent } from './components/confirma-quitar/confirma-quitar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-
     HomeComponent,
     NavbarComponent,
     EmpleadoComponent,
-    AgregarEmpleadoComponent
+    AgregarEmpleadoComponent,
+    ConfirmaQuitarComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +41,9 @@ import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-
     MatSnackBarModule,
     MatDialogModule
   ],
-  entryComponents:[
-    AgregarEmpleadoComponent
+  entryComponents: [
+    AgregarEmpleadoComponent,
+    ConfirmaQuitarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
