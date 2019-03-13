@@ -1,8 +1,13 @@
+<h1>
+    Presupuesto para: {{presupuesto.empleado.nombre}}
+</h1>
+<!-- NODOS DE CALCULADOS -->
 <ul class="lista">
     <app-empleado [empleado]='presupuesto.empleado' [noAcciones]='true'></app-empleado>
     <li>
+        <!-- TOTAL DE PRESPUESTO-->
         <h3>
-            Total: {{ presupuesto.presupuesto }}
+            Total: $ {{ presupuesto.presupuesto }}
         </h3>
     </li>
 </ul>

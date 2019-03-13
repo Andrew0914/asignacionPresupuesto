@@ -19,6 +19,9 @@ export class TotalPresupuestoComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Cierra el cuadro de dialogo
+   */
   cerrar() {
     this.dialogRef.close();
   }

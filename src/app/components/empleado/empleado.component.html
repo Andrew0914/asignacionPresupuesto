@@ -1,4 +1,6 @@
+<!-- ITEM EMPLEADO-->
 <li *ngIf='empleado'>
+    <!-- INFORMACION-->
     <h4 class='dline'>
         <span [ngSwitch]='empleado.tipo.tipo'>
           <span  *ngSwitchCase="'Manager'">
@@ -27,7 +29,7 @@
             <i class="fas fa-money-bill-alt"></i>
         </button>
     </div>
-    <!-- NODOS -->
+    <!-- NODOS RECURSIVOS-->
     <div *ngIf='empleado.nodos'>
         <ul class='lista'>
             <app-empleado *ngFor='let nodo of empleado.nodos' [empleado]='nodo' [noAcciones]='noAcciones'></app-empleado>

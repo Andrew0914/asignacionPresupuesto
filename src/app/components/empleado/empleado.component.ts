@@ -25,6 +25,9 @@ export class EmpleadoComponent implements OnInit {
   }
 
 
+  /**
+   * Abre el dialogo para confirma la remocion de un elemento basado en su id
+   */
   quitar() {
     const dialogRef = this.dialog.open(ConfirmaQuitarComponent, { width: '300px',  data: this.empleado, disableClose: true});
     dialogRef.afterClosed().subscribe( empleadoId => {
@@ -34,6 +37,9 @@ export class EmpleadoComponent implements OnInit {
     });
   }
 
+  /**
+   * Agrega empleados inferiores en loa jerarquia
+   */
   agregarInferior() {
     // si tiene nodos / es manager
     if ( this.empleado.nodos ) {
@@ -47,7 +53,9 @@ export class EmpleadoComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Genera el arbol y consulta el presupeusto para un empleado dado
+   */
   calculaPresupuesto( empleado: any){
     const dialogRef = this.dialog.open(TotalPresupuestoComponent, { width: '600px',  data: this.empleado});
   }

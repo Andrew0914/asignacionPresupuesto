@@ -63,6 +63,7 @@ export class AsignacionService {
    */
   crearJerarquinaInicial( manager: Manager) {
     this.departamento = { manager };
+    this.guardarCambios();
   }
 
   /**
@@ -72,12 +73,21 @@ export class AsignacionService {
     localStorage.setItem('departamento' , JSON.stringify( this.departamento ));
   }
 
+  /**
+   * Carga la data que este en local storage
+   */
   cargarLocalStorage() {
-      if ( localStorage.getItem('data') ){
-          this.departamento = JSON.parse( localStorage.getItem('departamento') );
-      } else {
-          this.departamento = null;
-      }
+    if ( localStorage.getItem('departamento') ) {
+        this.departamento = JSON.parse( localStorage.getItem('departamento') );
+    } else {
+        this.departamento = null;
+    }
+
+    if ( localStorage.getItem('incrementalID') ) {
+        this.incrementalID =  Number.parseInt(localStorage.getItem('incrementalID'), 10);
+    } else {
+        this.incrementalID = 0;
+    }
   }
 
   /**
@@ -85,6 +95,8 @@ export class AsignacionService {
    */
   getIncrementalID() {
     this.incrementalID += 1;
+    // alamacenamos el ultimo id incremental
+    localStorage.setItem('incrementalID', this.incrementalID.toString());
     return this.incrementalID;
   }
 
@@ -96,13 +108,13 @@ export class AsignacionService {
     if ( this.departamento.manager.id === id ) {
       this.departamento.manager = undefined;
     } else {
-      this.iteracionEliminar( this.departamento.manager,id);
+      this.iteracionEliminar( this.departamento.manager, id);
     }
     this.guardarCambios();
   }
 
   /**
-   * Itera los elementos o nodos , evalua que el id corresponday lo remueve de su arreglo correspondiente
+   * Itera los elementos o nodos rescursivamente, evalua que el id corresponday lo remueve de su arreglo correspondiente
    * @param nodo any
    * @param id number
    */
@@ -118,6 +130,10 @@ export class AsignacionService {
     }
   }
 
+  /**
+   * Calcula el presupuesto para el manager y los empleados que le reportan
+   * @param empleado any
+   */
   calcularPresupuesto(empleado: any) {
     let presupuesto = empleado.tipo.asignacion;
     if ( empleado.nodos ) {
@@ -128,6 +144,10 @@ export class AsignacionService {
     return {presupuesto , empleado};
   }
 
+  /**
+   * Itera los nodos recursivamente para obtener el presupuesto
+   * @param nodo any
+   */
   iteracionCalculo(nodo: any) {
     for (let i = 0; i < nodo.nodos.length ; i++) {
       console.log(nodo.nodos[i]);

@@ -1,11 +1,11 @@
-<!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
+<!-- cREACION DE EMPLEADO -->
 <h1 mat-dialog-title>Crear departamento</h1>
-
+<!-- FORMULARIO-->
 <div mat-dialog-content>
-    <mat-form-field class="mr-1">
+    <mat-form-field class="mr-1 full-width">
         <input matInput placeholder="Nombre del empleado" [(ngModel)]="nombre">
     </mat-form-field>
-    <mat-form-field class="mr-1">
+    <mat-form-field class="mr-1 full-width">
         <mat-select placeholder="Tipo de empleado" [(value)]="tipoElegido">
             <mat-option *ngFor="let tipoEmpleado of asigServ.getTiposEmpleado()" [value]="tipoEmpleado.tipo" [disabled]='empleado.tipo.tipo!=="Manager" && tipoEmpleado.tipo==="Manager"'>
                 {{tipoEmpleado.tipo}}
@@ -13,6 +13,7 @@
         </mat-select>
     </mat-form-field>
 </div>
+<!-- ACCIONES -->
 <div mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
     <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>

@@ -11,22 +11,22 @@
         <div class="inicio" *ngIf='!asigServ.getDepartamento()?.manager'>
             <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
             <h4>Crear departamento</h4>
-            <mat-form-field class="mr-1">
+            <mat-form-field class="mr-1 full-width">
                 <input matInput placeholder="Nombre del empleado" [(ngModel)]="nombre">
             </mat-form-field>
-            <mat-form-field class="mr-1">
+            <mat-form-field class="mr-1 full-width">
                 <mat-select placeholder="Tipo de empleado" [(value)]="tipoElegido">
                     <mat-option *ngFor="let tipoEmpleado of asigServ.getTiposEmpleado()" [value]="tipoEmpleado.tipo" [disabled]='tipoEmpleado.tipo!="Manager"'>
                         {{tipoEmpleado.tipo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="crearDepartamento()">Crear</button>
+            <button mat-raised-button color="primary" (click)="crearDepartamento()" class='full-width'>Crear</button>
         </div>
         <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
         <!-- JERARQUIA DE DEPARTAMENTOS -->
         <br>
-        <ul *ngIf='asigServ.getDepartamento()?.manager' class='mt-2 lista'>
+        <ul *ngIf='asigServ.getDepartamento()?.manager' class='mt-2 lista pl-0'>
             <app-empleado [empleado]='asigServ.getDepartamento().manager' [semilla]='true'></app-empleado>
         </ul>
         <!-- JERARQUIA DE DEPARTAMENTOS -->
