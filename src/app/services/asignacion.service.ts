@@ -154,7 +154,6 @@ export class AsignacionService {
    */
   iteracionCalculo(nodo: any) {
     for (let i = 0; i < nodo.nodos.length ; i++) {
-      console.log(nodo.nodos[i]);
       this.presupuestoTotal += nodo.nodos[i].tipo.asignacion;
       if (nodo.nodos[i].nodos ) {
         this.iteracionCalculo(nodo.nodos[i]);

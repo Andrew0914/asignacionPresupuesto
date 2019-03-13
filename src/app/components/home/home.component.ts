@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   nombre: string;
 
   constructor(public asigServ: AsignacionService, private snackBar: MatSnackBar) {
-    console.log(this.asigServ.getDepartamento());
   }
 
   ngOnInit() {
