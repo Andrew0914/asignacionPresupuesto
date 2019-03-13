@@ -56,9 +56,8 @@ export class AsignacionService {
    * Establece la semilla o carga inicial de la jerarquia
    * @param manager Manager
    */
-  crearJerarquinaInicial( manager: Manager){
+  crearJerarquinaInicial( manager: Manager) {
     this.departamento = { manager };
-    console.log(this.departamento);
   }
 
 }

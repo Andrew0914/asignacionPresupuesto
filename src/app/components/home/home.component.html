@@ -8,7 +8,7 @@
 
     <!-- CONTENIDO-->
     <mat-card-content>
-        <div class="inicio" *ngIf='!asigServ.getDepartamento()'>
+        <div class="inicio" *ngIf='!departamento'>
             <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
             <h4>Crear departamento</h4>
             <mat-form-field class="mr-1">
@@ -25,13 +25,10 @@
         </div>
         <!-- INICIO/CREACION DE LA JERARQUIA DEL DEPARTAMENTO -->
         <!-- JERARQUIA DE DEPARTAMENTOS -->
-        <mat-list>
-            <mat-list-item>
-                <i class="fas fa-user-tie" mat-list-icon></i>
-                <h4 mat-line>Manager A </h4>
-                <p mat-line> $300 </p>
-            </mat-list-item>
-        </mat-list>
+        <br>
+        <ul *ngIf='departamento' class='mt-2'>
+            <app-empleado [empleado]='departamento.manager' [semilla]='true'></app-empleado>
+        </ul>
         <!-- JERARQUIA DE DEPARTAMENTOS -->
     </mat-card-content>
 

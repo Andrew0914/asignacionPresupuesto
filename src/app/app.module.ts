@@ -9,20 +9,20 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatListModule} from '@angular/material/list';
-
 
 
 /** COMPONENTES */
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EmpleadoComponent } from './components/empleado/empleado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    EmpleadoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +33,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    MatSnackBarModule,
-    MatListModule
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

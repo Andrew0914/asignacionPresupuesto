@@ -1,0 +1,36 @@
+<li class='mt-1'>
+    <h4 class='dline'>
+        <span [ngSwitch]='empleado.tipo.tipo'>
+          <span  *ngSwitchCase="'Manager'">
+              <i class="fas fa-user-tie"></i>
+          </span>
+        <span *ngSwitchCase="'QA'">
+                <i class="fas fa-vial"></i>
+            </span>
+        <span *ngSwitchCase="'Developer'">
+                <i class="fas fa-laptop"></i>
+            </span>
+        <span *ngSwitchDefault></span>
+        </span>
+        {{ empleado.nombre }} $ {{ empleado.tipo.asignacion }}
+    </h4>
+    <!-- ACCIONES POR NODO-->
+    <div class="button-row dline">
+        <button mat-button color="primary" (click)="agregarAmiNivel()" *ngIf='!semilla'>
+			<i class="fa fa-plus"></i>
+		</button>
+        <button mat-button color="accent" (click)="quitar()">
+			<i class="fa fa-minus"></i>
+		</button>
+        <button mat-button color="warn" *ngIf='empleado.tipo.tipo == "Manager"' (click)="agregarInferior()">
+			<i class="fa fa-plus"></i>
+			<i class="fas fa-arrow-alt-circle-down"></i>
+		</button>
+    </div>
+    <!-- NODOS -->
+    <div *ngIf='empleado.nodos'>
+        <ul>
+            <app-empleado *ngFor='let nodo of empleado.nodos' [empleado]='nodo'></app-empleado>
+        </ul>
+    </div>
+</li>
