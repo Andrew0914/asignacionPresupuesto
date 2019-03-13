@@ -24,7 +24,7 @@ export class AsignacionService {
   ];
 
   private departamento: any;
-  private incrementalID = 0;
+   incrementalID = 0;
   private presupuestoTotal = 0;
 
   constructor() {
@@ -97,6 +97,10 @@ export class AsignacionService {
     this.incrementalID += 1;
     // alamacenamos el ultimo id incremental
     localStorage.setItem('incrementalID', this.incrementalID.toString());
+    return this.incrementalID;
+  }
+
+  getCurrentID() {
     return this.incrementalID;
   }
 

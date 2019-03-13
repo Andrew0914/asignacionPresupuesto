@@ -10,7 +10,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatChipsModule} from '@angular/material/chips';
 
 
 /** COMPONENTES */
@@ -43,7 +42,6 @@ import { TotalPresupuestoComponent } from './components/total-presupuesto/total-
     MatInputModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatChipsModule
   ],
   entryComponents: [
     AgregarEmpleadoComponent,
