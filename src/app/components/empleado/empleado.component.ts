@@ -31,6 +31,7 @@ export class EmpleadoComponent implements OnInit {
     dialogRef.afterClosed().subscribe( empleadoId => {
       if ( empleadoId ) {
         this.asigService.eliminar( empleadoId );
+        this.asigService.guardarCambios();
         this.asigService.setTotalDepartamento();
       }
     });

@@ -4,7 +4,6 @@ import { AsignacionService } from './asignacion.service';
 import { Manager } from '../model/manager.model';
 import { TipoEmpleado } from '../model/tipo-empleado.model';
 import { Empleado } from '../model/empleado.model';
-import { currentId } from 'async_hooks';
 
 describe('AsignacionService', () => {
 

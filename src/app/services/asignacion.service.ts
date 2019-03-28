@@ -64,7 +64,6 @@ export class AsignacionService {
    */
   crearJerarquinaInicial( manager: Manager) {
     this.departamento = { manager };
-    this.guardarCambios();
   }
 
   /**
@@ -115,7 +114,6 @@ export class AsignacionService {
     } else {
       this.iteracionEliminar( this.departamento.manager, id);
     }
-    this.guardarCambios();
   }
 
   /**

@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
         nodos: []
       };
       this.asigServ.crearJerarquinaInicial( manager );
+      this.asigServ.guardarCambios();
       this.asigServ.setTotalDepartamento();
     } else {
       this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
