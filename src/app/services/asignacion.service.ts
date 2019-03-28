@@ -59,38 +59,6 @@ export class AsignacionService {
   }
 
   /**
-   * Establece la semilla o carga inicial de la jerarquia
-   * @param manager Manager
-   */
-  crearJerarquinaInicial( manager: Manager) {
-    this.departamento = { manager };
-  }
-
-  /**
-   * Almacena los cambios en el locla storage
-   */
-  guardarCambios() {
-    localStorage.setItem('departamento' , JSON.stringify( this.departamento ));
-  }
-
-  /**
-   * Carga la data que este en local storage
-   */
-  cargarLocalStorage() {
-    if ( localStorage.getItem('departamento') ) {
-        this.departamento = JSON.parse( localStorage.getItem('departamento') );
-    } else {
-        this.departamento = null;
-    }
-
-    if ( localStorage.getItem('incrementalID') ) {
-        this.incrementalID =  Number.parseInt(localStorage.getItem('incrementalID'), 10);
-    } else {
-        this.incrementalID = 0;
-    }
-  }
-
-  /**
    * Devuelve el id incrementando en uno
    */
   getIncrementalID() {
@@ -100,10 +68,25 @@ export class AsignacionService {
     return this.incrementalID;
   }
 
+  /**
+   * Devuelve valor actual del ultimo ID asignado a un empleado
+   */
   getCurrentID() {
     return this.incrementalID;
   }
 
+  /**
+   * Establece la semilla o carga inicial de la jerarquia
+   * @param manager Manager
+   */
+  crearJerarquinaInicial( manager: Manager) {
+    this.departamento = { manager };
+  }
+
+  agregarEmpleado( empleadoSuperior: any,empleadoNuevo: any){
+    empleadoNuevo.id = this.getIncrementalID();
+    empleadoSuperior.nodos.unshift(empleadoNuevo);
+  }
   /**
    * Recibe el id del elemento a borrar compara si es la semilla o inicia una iteracion de borrado
    * @param id number
@@ -160,11 +143,38 @@ export class AsignacionService {
     }
   }
 
+  /**
+   * Coloca le valor total de presupuesto en la variable global del departamento
+   */
   setTotalDepartamento() {
     if ( this.departamento && this.departamento.manager ) {
       this.totalDepartamento =  this.calcularPresupuesto( this.departamento.manager ).presupuesto;
     } else {
       this.totalDepartamento = 0;
+    }
+  }
+
+    /**
+   * Almacena los cambios en el locla storage
+   */
+  guardarCambios() {
+    localStorage.setItem('departamento' , JSON.stringify( this.departamento ));
+  }
+
+  /**
+   * Carga la data que este en local storage
+   */
+  cargarLocalStorage() {
+    if ( localStorage.getItem('departamento') ) {
+        this.departamento = JSON.parse( localStorage.getItem('departamento') );
+    } else {
+        this.departamento = null;
+    }
+
+    if ( localStorage.getItem('incrementalID') ) {
+        this.incrementalID =  Number.parseInt(localStorage.getItem('incrementalID'), 10);
+    } else {
+        this.incrementalID = 0;
     }
   }
 

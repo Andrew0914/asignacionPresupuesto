@@ -28,14 +28,14 @@ export class AgregarEmpleadoComponent implements OnInit {
   guardar() {
     // validamos
     if (this.nombre && this.tipoElegido ) {
-      let empleado = null;
+      let empleadoNuevo = null;
       // si es manager tendra nodos
       if (this.tipoElegido === 'Manager') {
-        empleado = { id: this.asigServ.getIncrementalID() , nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido) , nodos: [] };
+        empleadoNuevo = { nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido) , nodos: [] };
       } else {
-        empleado = { id: this.asigServ.getIncrementalID(), nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido)  };
+        empleadoNuevo = { nombre: this.nombre, tipo: this.asigServ.getTipoEmpleado(this.tipoElegido)  };
       }
-      this.dialogRef.close( empleado );
+      this.dialogRef.close( empleadoNuevo );
     } else {
       this.snackBar.open('Coloca el nombre y tipo de empleado', '', {duration: 3000});
     }

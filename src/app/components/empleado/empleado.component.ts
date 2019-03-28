@@ -44,9 +44,9 @@ export class EmpleadoComponent implements OnInit {
     // si tiene nodos / es manager
     if ( this.empleado.nodos ) {
       const dialogRef = this.dialog.open(AgregarEmpleadoComponent, { width: '300px',  data: this.empleado, disableClose: true});
-      dialogRef.afterClosed().subscribe( empleado => {
-        if ( empleado ) {
-          this.empleado.nodos.unshift(empleado);
+      dialogRef.afterClosed().subscribe( empleadoNuevo => {
+        if ( empleadoNuevo ) {
+          this.asigService.agregarEmpleado( this.empleado , empleadoNuevo);
           this.asigService.guardarCambios();
           this.asigService.setTotalDepartamento();
         }
