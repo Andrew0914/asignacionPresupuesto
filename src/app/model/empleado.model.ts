@@ -1,7 +1,7 @@
 import { TipoEmpleado } from './tipo-empleado.model';
 
 export interface Empleado {
-    id: number;
+    id?: number;
     nombre: string;
     tipo: TipoEmpleado;
 }

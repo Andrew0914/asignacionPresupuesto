@@ -46,9 +46,12 @@ export class EmpleadoComponent implements OnInit {
       const dialogRef = this.dialog.open(AgregarEmpleadoComponent, { width: '300px',  data: this.empleado, disableClose: true});
       dialogRef.afterClosed().subscribe( empleadoNuevo => {
         if ( empleadoNuevo ) {
-          this.asigService.agregarEmpleado( this.empleado , empleadoNuevo);
-          this.asigService.guardarCambios();
-          this.asigService.setTotalDepartamento();
+          if(this.asigService.agregarEmpleado( this.empleado , empleadoNuevo)){
+            this.asigService.guardarCambios();
+            this.asigService.setTotalDepartamento();
+          }else{
+            console.log('Temporal: no se agrego empleaod -> poner snackbar');
+          }
         }
       });
     }

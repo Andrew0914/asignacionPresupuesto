@@ -24,7 +24,7 @@ export class AsignacionService {
   ];
 
   private departamento: any;
-  private incrementalID = 0;
+  public incrementalID = 0;
   private presupuestoTotal = 0;
   public totalDepartamento = 0;
 
@@ -84,8 +84,13 @@ export class AsignacionService {
   }
 
   agregarEmpleado( empleadoSuperior: any,empleadoNuevo: any){
-    empleadoNuevo.id = this.getIncrementalID();
-    empleadoSuperior.nodos.unshift(empleadoNuevo);
+    if( empleadoSuperior.nodos ){
+      empleadoNuevo.id = this.getIncrementalID();
+      empleadoSuperior.nodos.unshift(empleadoNuevo);
+      return true;
+    }
+
+    return false;
   }
   /**
    * Recibe el id del elemento a borrar compara si es la semilla o inicia una iteracion de borrado
@@ -121,8 +126,9 @@ export class AsignacionService {
    * @param empleado any
    */
   calcularPresupuesto(empleado: any) {
-    let presupuesto = empleado.tipo.asignacion;
+    let presupuesto = 0;
     if ( empleado.nodos ) {
+      presupuesto = empleado.tipo.asignacion;
       this.iteracionCalculo(empleado);
       presupuesto += this.presupuestoTotal;
     }
